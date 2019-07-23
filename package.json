@@ -1,0 +1,41 @@
+{
+  "name": "pints-and-shells",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "@sweetalert/with-react": "^0.1.1",
+    "firebase": "^6.2.4",
+    "google-maps-react": "^2.0.2",
+    "js-cookie": "^2.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.8.6",
+    "react-facebook-login": "^4.1.1",
+    "react-form-login": "^1.1.4",
+    "react-google-login": "^3.2.1",
+    "react-google-maps": "^9.4.5",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.0.1",
+    "react-transition-group": "^2.9.0",
+    "reactstrap": "^6.5.0",
+    "recompose": "^0.30.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.83.0",
+    "sweetalert": "^2.1.2",
+    "why-did-you-update": "^1.0.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
