@@ -20,12 +20,11 @@ class App extends Component {
       <div style={{height: '950px'}}className="App">
         <NavBar />
         <Switch>
-        <Route
-          exact path='/testing'
-            render={(props) => <Testing name='mirza' {...props} />}
-        />
 
-          <Route exact path="/login" component={Login}/>
+          <Route
+          exact path='/login'
+            render={(props) => <Login  {...props} />}
+        />
           <Route exact path="/register" component={Register}/>
           <Route exact path="/" component={MainComponent}/>
           <Route exact path="/brewTour" component={BrewTour} />

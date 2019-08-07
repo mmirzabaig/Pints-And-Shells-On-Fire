@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Button } from 'semantic-ui-react';
 import Map from '../MapContainer';
 import firebase from '../firebaseConfig';
+import swal from '@sweetalert/with-react';
 
 
 class Brewery extends Component {
@@ -16,25 +17,50 @@ class Brewery extends Component {
 
   getBrewsInDB = () => {
     const db = firebase.firestore();
-    firebase.auth().onAuthStateChanged(async(user) =>{
-      console.log(user.uid, '<----- userrrr')
-      let doc = 'UserData-' + user.uid
-      console.log(doc, 'doc')
-      await db.collection(doc).orderBy('timestamp',"asc")
-        .onSnapshot(async(result) => {
-          let array = [];
-          await result.forEach((item, index) => {
-            console.log(item.data(), 'created/MIRZA')
-            array.push(item.data());
-          })
-          await this.setState({
-            brewsFromDB: array
-          })
-  
-        })
-  
-    })
+   
+      firebase.auth().onAuthStateChanged(async(user) =>{
+        if (user === null) {
+          swal('Login with google to continue')
+          this.props.history.push('/login')
+        } else {
+          console.log(user.uid, '<----- userrrr')
+          let doc = 'UserData-' + user.uid
+          console.log(doc, 'doc')
+          await db.collection(doc).orderBy('timestamp',"asc")
+            .onSnapshot(async(result) => {
+              let array = [];
+              await result.forEach((item, index) => {
+                console.log(item.data(), 'created/MIRZA')
+                array.push(item.data());
+              })
+              await this.setState({
+                brewsFromDB: array
+              })
+            })
+        }
+
+      })
+    
   };
+
+  deleteBrew = async (place_id) => {
+    const db = firebase.firestore();
+   
+    firebase.auth().onAuthStateChanged(async(user) =>{
+      if (user === null) {
+          return;
+      } else {
+        console.log('hello')
+        let User = 'UserData-' + firebase.auth().currentUser.uid;
+        console.log(place_id, 'place_id')
+        db.collection(User).doc(place_id).delete().then(function() {
+          console.log("Document successfully deleted!");
+        }).catch(function(error) {
+          console.log("Error removing document: ", error);
+        });
+      }
+  })
+}
  
   // getBreweries = async () => {
   //   try {
@@ -109,13 +135,13 @@ componentDidMount() {
             <br></br>From the historic Celis Brewery to the Sours of Jester King, each of these breweries have a captivating story to tell.</h3>
           </div> */}
           <div style={{width: menuWidth, height: menuHeight, position: 'absolute', zIndex: '1', left: '75%', top: '25%', background: 'black', opacity: '0.8', display: 'flex', flexFlow: 'column'}}>
-              <p style={{color: 'white', fontSize: '13px'}}>{this.state.brewsFromDB ? this.state.brewsFromDB.length < 5 ? 'YOU CAN CHOSE UPTO FIVE BREWERIES ': 'CLICK ON VIEW YOUR TOUR' : null}</p>
+              <p style={{color: 'white', fontSize: '13px'}}>YOU CAN CHOSE UPTO FIVE BREWERIES</p>
               {
                 this.state.brewsFromDB ? 
                   this.state.brewsFromDB.map((item, index) => {
                     return (
                       <div style={{height: '100%', borderTop: this.state.brewsFromDB.length < 5 ? '1px solid white' : '1px solid yellow', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                       <button style={xButton}>X</button>
+                       <button style={xButton} onClick={() => this.deleteBrew(item.place_id)}>X</button>
                        <p style={{ fontSize: '15px'}}>{item.name}</p>
                       </div>
                     )

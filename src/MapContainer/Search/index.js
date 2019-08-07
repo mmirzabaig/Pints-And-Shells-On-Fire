@@ -111,6 +111,8 @@ export class Search extends Component {
     }
     let menuHeight = window.innerHeight / 16 + 'px';
     let menuWidth = window.innerWidth / 7 + 'px';
+  
+
     
 
     return (

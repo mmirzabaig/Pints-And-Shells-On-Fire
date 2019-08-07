@@ -199,7 +199,18 @@ import Search from './Search';
       border: '1px solid black',
     }
 
-
+    const createMapOptions = (maps) => {
+      return ({
+        panControl: false,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          // style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+          mapTypeIds: ['roadmap', 'terrain']
+        },
+        scrollwheel: false,
+        styles: [{ stylers: [{ 'saturation': -100 }, { 'gamma': 0.8 }, { 'lightness': 4 }, { 'visibility': 'on' }] }]
+      });
+    }
 
     // let menuHeight = window.innerHeight / 12 + 'px';
     // let menuWidth = window.innerWidth / 7 + 'px';
@@ -215,6 +226,12 @@ import Search from './Search';
         onClick = { this.onMapClick }
         zoom = {11 }
         initialCenter = {{ lat: 30.3005, lng: -97.7388 }}
+        mapTypeControl = {true}
+        mapTypeControlOptions = {{
+          // style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+          mapTypeIds: ['roadmap', 'terrain']
+        }}
+        options={createMapOptions}
       > 
         {this.state.autoFillNames ? (
           <Search

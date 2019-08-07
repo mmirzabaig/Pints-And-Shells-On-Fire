@@ -18,22 +18,25 @@ export default class MenuExampleInvertedSecondary extends Component {
   componentDidMount() {
     const db = firebase.firestore();
     firebase.auth().onAuthStateChanged(async(user) =>{
-      console.log(user, '<----- userrrr')
-      let doc = 'UserData-' + user.uid
-      console.log(doc, 'doc')
-      await db.collection(doc).orderBy('timestamp',"asc")
-        .onSnapshot(async(result) => {
-          let array = [];
-          await result.forEach((item, index) => {
-            console.log(item.data(), 'created')
-            array.push(item.data());
+      if (user === null) {
+        return;
+      } else {
+        console.log(user, '<----- userrrr')
+        let doc = 'UserData-' + user.uid
+        console.log(doc, 'doc')
+        await db.collection(doc).orderBy('timestamp',"asc")
+          .onSnapshot(async(result) => {
+            let array = [];
+            await result.forEach((item, index) => {
+              console.log(item.data(), 'created')
+              array.push(item.data());
+            })
+            await this.setState({
+              brewTour: array
+            })
+    
           })
-          await this.setState({
-            brewTour: array
-          })
-  
-        })
-  
+      }
     })
   }
 

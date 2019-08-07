@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from '../firebaseConfig/index';
 import DisplayMap from './DisplayMap';
+import swal from '@sweetalert/with-react';
+
 
 
 class OtherMap extends React.PureComponent {
@@ -94,20 +96,20 @@ class OtherMap extends React.PureComponent {
       <div style={{height: height, marginTop: '-.6%', display: 'flex'}}>
         {/* {this.state.brews ? <DisplayMap brews={this.state.brews} />: null} */}
 
-        <div style={{height: '95%',width: '100%',border: '1px solid black', display: 'flex', flexDirection: 'column'}} >
-          <div  className='map' style={{height: '100%', border: '2px solid blue'}}>
+        <div style={{height: '95%',width: '100%',fontWeight: 'bold' , display: 'flex', flexDirection: 'column'}} >
+          <div  className='map' style={{height: '100%', border: '5px solid black'}}>
             {this.state.brewsFromDB ? <DisplayMap/> : null}
           </div>
 
-          <div className='brewery' style={{height: '100%', border: '1px solid black', display: 'flex'}}>
+          <div className='brewery' style={{height: '100%', display: 'flex', color:'black'}}>
             {
               this.state.brewsFromDB ? this.state.brewsFromDB.map((item, i) => (
                 <div
                   name='mirza'
                   onMouseEnter={() => this.onHover(item.name, item.address, item.opening_hours, item.photos, item.rating, item.website)}
-                  style={{width: '100%', border: '2px solid black'}}
+                  style={{width: '100%', border: '2px solid black',background:'white' }}
                 >
-                  {i+1}
+                  <span style={{color:'red'}}>{i+1}</span>
                   <p>{item.name}</p>
                 </div>
               )) : null
@@ -115,11 +117,17 @@ class OtherMap extends React.PureComponent {
           </div>
         </div>
 
-        <div style={{height: '95%',width: '100%', border: '2px solid pink'}}>
-            {this.state.showBrewery ? showBrewery() : null}
+        <div style={{height: '95%',width: '100%', color:'black'}}>
+            <h2 style={{marginTop:'10%'}}>{this.state.showBrewery ? showBrewery() : null}</h2>
+            <div>
+              <h1>{this.state.breweryName}</h1>
+              <h3>{this.state.breweryAddress}</h3>
+              <h3><span style={{fontWeight: 'bold'}}>Rating:</span> {this.state.breweryRating}</h3>
+              <h3><a href={this.state.breweryWebsite} target="_blank">{this.state.breweryWebsite}</a></h3> <br/>
+            </div>
         </div>
       </div>
-      )
+      ) 
   }
 }
 
