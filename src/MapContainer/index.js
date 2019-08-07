@@ -97,6 +97,7 @@ import Search from './Search';
     if (brewery.position) {
       jsonObj['position'] = brewery.position;
     }
+    
     let doc = 'UserData-' + firebase.auth().currentUser.uid;
     console.log(brewery.place_id, 'place_id')
     console.log(doc, 'doc');

@@ -97,7 +97,7 @@ class OtherMap extends React.PureComponent {
         {/* {this.state.brews ? <DisplayMap brews={this.state.brews} />: null} */}
 
         <div style={{height: '95%',width: '100%',fontWeight: 'bold' , display: 'flex', flexDirection: 'column'}} >
-          <div  className='map' style={{height: '100%', border: '5px solid black'}}>
+          <div  className='map' style={{height: '100%'}}>
             {this.state.brewsFromDB ? <DisplayMap/> : null}
           </div>
 
@@ -107,7 +107,7 @@ class OtherMap extends React.PureComponent {
                 <div
                   name='mirza'
                   onMouseEnter={() => this.onHover(item.name, item.address, item.opening_hours, item.photos, item.rating, item.website)}
-                  style={{width: '100%', border: '2px solid black',background:'white' }}
+                  style={{width: '100%', border: '1px solid black',background:'white' }}
                 >
                   <span style={{color:'red'}}>{i+1}</span>
                   <p>{item.name}</p>
