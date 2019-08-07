@@ -1,41 +1,44 @@
 # Pints-Shells
-A User-friendly platform to locate breweries in and around Austin, TX and also give locations to nearby places to get tacos.
-
-
+A User-friendly platform to locate breweries in and around Austin, TX and also give locations to nearby places to get tacos
 
 ## Link to Site
-
 
 ## Languages Used
 - HTML
 - CSS
 - JavaScript
 - JSX
-- Mongoose
 
 ## APIs Used:
-- Open Brewery DB
-- Google Maps API
-- Google Places API
-- Google Login
-- Facebook Login
+- Google Maps
+- Google Places
+- Cloud Functions
 
-### Front-End
+### FRONTEND
 - React
 
-### Back-End
-- Node
-- Express
-- MongoDB
+### DATABSE
+- Google Firestore
 
+### SERVERLESS
 
-## Stretch Goals:
-- Give location of places to get tacos within short distance of each brewery
-- User feedback on breweries
-- Create a User profile
+### Dependencies
+- "@fortawesome/fontawesome-free": "^5.9.0",
+- "@sweetalert/with-react": "^0.1.1",
+- "firebase": "^6.2.4",
+- "google-maps-react": "^2.0.2",
+- "js-cookie": "^2.2.0",
+- "prop-types": "^15.7.2",
+- "react": "^16.8.6",
+- "react-dom": "^16.8.6",
+- "react-facebook-login": "^4.1.1",
+- "react-form-login": "^1.1.4",
+- "react-google-maps": "^9.4.5",
+- "react-router-dom": "^4.3.1",
+- "react-scripts": "^3.0.1",
+- "reactstrap": "^6.5.0",
+- "recompose": "^0.30.0",
+- "semantic-ui-css": "^2.4.1",
+- "semantic-ui-react": "^0.83.0",
+- "sweetalert": "^2.1.2"
 
-![alt text](./public/images/pints.png "Logo Title Text 1")
-![alt text](./public/images/login.png "Logo Title Text 1")
-![alt text](./public/images/pints1.png "Logo Title Text 1")
-![alt text](./public/images/pints2.png "Logo Title Text 1")
-![alt text](./public/images/shells.png "Logo Title Text 1")
