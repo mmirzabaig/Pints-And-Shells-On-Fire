@@ -5,7 +5,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.9.0",
     "@sweetalert/with-react": "^0.1.1",
-    "firebase": "^6.2.4",
+    "firebase": "^10.9.0",
     "google-maps-react": "^2.0.2",
     "js-cookie": "^2.2.0",
     "prop-types": "^15.7.2",
